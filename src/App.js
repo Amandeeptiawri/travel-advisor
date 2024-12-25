@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CssBaseline } from '@mui/material';
 import Grid from '@mui/material/Grid';
-import { getPlacesData, getWeatherData } from './components/api/travelAdvisorApi';
+import { getPlacesData } from './components/api/travelAdvisorApi';
 import axios from 'axios';
 import Header from './components/Header/Header';
 import List from './components/List/List';
@@ -14,7 +14,7 @@ const App = () => {
   const [coords, setCoords] = useState({});
   const [bounds, setBounds] = useState(null);
 
-  const [weatherData, setWeatherData] = useState([]);
+
   const [filteredPlaces, setFilteredPlaces] = useState([]);
   const [places, setPlaces] = useState([]);
 
@@ -39,8 +39,7 @@ const App = () => {
     if (bounds) {
       setIsLoading(true);
 
-      getWeatherData(coords.lat, coords.lng)
-        .then((data) => setWeatherData(data));
+     
 
       getPlacesData(type, bounds.sw, bounds.ne)
         .then((data) => {
@@ -93,7 +92,7 @@ const App = () => {
             setCoords={setCoords}
             coords={coords}
             places={filteredPlaces.length ? filteredPlaces : places}
-            weatherData={weatherData}
+           
           />
         </Grid>
       </Grid>

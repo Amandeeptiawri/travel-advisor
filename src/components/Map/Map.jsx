@@ -52,22 +52,8 @@ const Map = ({ coords, places, setCoords, setBounds, setChildClicked, weatherDat
             </div>
           ))}
 
-          {weatherData?.list?.length > 0 &&
-            weatherData.list.map((data, i) => {
-              console.log(data);
-              const icon = data.weather?.[0]?.icon; // Ensure icon is accessible
-              return (
-                <div key={i} lat={data.coord.lat} lng={data.coord.lon}>
-                  {icon && (
-                    <img
-                      src={`http://openweathermap.org/img/wn/${icon}@2x.png`}
-                      height="70px"
-                      alt="Weather Icon"
-                    />
-                  )}
-                </div>
-              );
-            })}
+         
+            
       </GoogleMapReact>
     </div>
   );
